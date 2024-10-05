@@ -1,0 +1,20 @@
+{
+  "name": "bingo-project",
+  "version": "1.0.0",
+  "description": "Bingo Project usando Electron",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "devDependencies": {
+    "electron": "^22.0.0"
+  },
+  "dependencies": {
+    "canvas-confetti": "^1.9.3",
+    "child_process": "^1.0.2",
+    "jimp": "^1.6.0",
+    "sharp": "^0.33.5",
+    "uuid": "^10.0.0",
+    "xlsx": "^0.18.5"
+  }
+}

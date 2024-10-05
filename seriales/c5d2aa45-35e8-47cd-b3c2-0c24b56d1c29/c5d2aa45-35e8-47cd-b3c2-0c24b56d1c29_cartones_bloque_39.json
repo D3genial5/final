@@ -1,0 +1,402 @@
+[
+  {
+    "idCarton": 381,
+    "carton": [
+      [
+        4,
+        15,
+        null,
+        null,
+        43,
+        null,
+        null,
+        73,
+        83
+      ],
+      [
+        null,
+        14,
+        null,
+        34,
+        50,
+        null,
+        68,
+        77,
+        null
+      ],
+      [
+        1,
+        null,
+        28,
+        null,
+        null,
+        54,
+        63,
+        null,
+        85
+      ]
+    ],
+    "jugada": "1",
+    "fecha": "2024-10-12"
+  },
+  {
+    "idCarton": 382,
+    "carton": [
+      [
+        5,
+        13,
+        null,
+        32,
+        null,
+        56,
+        67,
+        null,
+        null
+      ],
+      [
+        7,
+        null,
+        24,
+        33,
+        null,
+        null,
+        66,
+        null,
+        83
+      ],
+      [
+        null,
+        15,
+        29,
+        null,
+        47,
+        57,
+        null,
+        80,
+        null
+      ]
+    ],
+    "jugada": "1",
+    "fecha": "2024-10-12"
+  },
+  {
+    "idCarton": 383,
+    "carton": [
+      [
+        null,
+        15,
+        26,
+        null,
+        null,
+        56,
+        66,
+        null,
+        82
+      ],
+      [
+        null,
+        null,
+        21,
+        null,
+        44,
+        51,
+        null,
+        75,
+        86
+      ],
+      [
+        1,
+        null,
+        null,
+        31,
+        49,
+        null,
+        70,
+        73,
+        null
+      ]
+    ],
+    "jugada": "1",
+    "fecha": "2024-10-12"
+  },
+  {
+    "idCarton": 384,
+    "carton": [
+      [
+        null,
+        16,
+        25,
+        null,
+        null,
+        null,
+        null,
+        73,
+        85
+      ],
+      [
+        6,
+        null,
+        27,
+        36,
+        null,
+        54,
+        null,
+        77,
+        null
+      ],
+      [
+        null,
+        20,
+        null,
+        38,
+        41,
+        53,
+        64,
+        null,
+        87
+      ]
+    ],
+    "jugada": "1",
+    "fecha": "2024-10-12"
+  },
+  {
+    "idCarton": 385,
+    "carton": [
+      [
+        10,
+        19,
+        null,
+        null,
+        46,
+        null,
+        null,
+        78,
+        81
+      ],
+      [
+        null,
+        18,
+        null,
+        37,
+        45,
+        null,
+        62,
+        72,
+        null
+      ],
+      [
+        8,
+        null,
+        29,
+        null,
+        null,
+        57,
+        65,
+        null,
+        88
+      ]
+    ],
+    "jugada": "1",
+    "fecha": "2024-10-12"
+  },
+  {
+    "idCarton": 386,
+    "carton": [
+      [
+        1,
+        15,
+        null,
+        35,
+        null,
+        56,
+        62,
+        null,
+        null
+      ],
+      [
+        6,
+        null,
+        26,
+        31,
+        null,
+        null,
+        61,
+        null,
+        89
+      ],
+      [
+        null,
+        11,
+        23,
+        null,
+        50,
+        52,
+        null,
+        74,
+        null
+      ]
+    ],
+    "jugada": "1",
+    "fecha": "2024-10-12"
+  },
+  {
+    "idCarton": 387,
+    "carton": [
+      [
+        null,
+        14,
+        27,
+        null,
+        null,
+        54,
+        62,
+        null,
+        85
+      ],
+      [
+        null,
+        null,
+        23,
+        null,
+        48,
+        57,
+        null,
+        72,
+        90
+      ],
+      [
+        7,
+        null,
+        null,
+        40,
+        41,
+        null,
+        66,
+        80,
+        null
+      ]
+    ],
+    "jugada": "1",
+    "fecha": "2024-10-12"
+  },
+  {
+    "idCarton": 388,
+    "carton": [
+      [
+        null,
+        19,
+        29,
+        null,
+        null,
+        null,
+        null,
+        73,
+        81
+      ],
+      [
+        2,
+        null,
+        25,
+        36,
+        null,
+        59,
+        null,
+        71,
+        null
+      ],
+      [
+        null,
+        20,
+        null,
+        32,
+        43,
+        57,
+        61,
+        null,
+        83
+      ]
+    ],
+    "jugada": "1",
+    "fecha": "2024-10-12"
+  },
+  {
+    "idCarton": 389,
+    "carton": [
+      [
+        7,
+        19,
+        null,
+        null,
+        47,
+        null,
+        null,
+        72,
+        84
+      ],
+      [
+        null,
+        11,
+        null,
+        33,
+        43,
+        null,
+        66,
+        71,
+        null
+      ],
+      [
+        4,
+        null,
+        22,
+        null,
+        null,
+        57,
+        68,
+        null,
+        86
+      ]
+    ],
+    "jugada": "1",
+    "fecha": "2024-10-12"
+  },
+  {
+    "idCarton": 390,
+    "carton": [
+      [
+        2,
+        18,
+        null,
+        38,
+        null,
+        56,
+        67,
+        null,
+        null
+      ],
+      [
+        4,
+        null,
+        30,
+        34,
+        null,
+        null,
+        61,
+        null,
+        81
+      ],
+      [
+        null,
+        20,
+        28,
+        null,
+        43,
+        60,
+        null,
+        71,
+        null
+      ]
+    ],
+    "jugada": "1",
+    "fecha": "2024-10-12"
+  }
+]

@@ -1,0 +1,3 @@
+Serial: a3a559e2-1daf-400f-beb2-595cfef87b76
+N jugada: 3
+Fecha: 2024-10-12
