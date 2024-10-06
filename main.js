@@ -85,33 +85,36 @@ ipcMain.on('generar-cartones', (event, data) => {
     const { fechaJuego, cantidadCartones, cantidadJugadas } = data;
     const bloqueSize = 10;  // Tamaño del bloque
 
+    // Ruta al ejecutable exportCartones.exe en la carpeta principal del proyecto
+    const exePath = path.join(__dirname, 'exportCartones.exe');
+
     // Para cada jugada, generamos un archivo de Excel distinto y un serial distinto
     for (let jugada = 1; jugada <= cantidadJugadas; jugada++) {
         const serial = uuidv4();  // Crear un serial único para cada jugada
         const rutaExcel = path.join(__dirname, `cartones_${serial}.xlsx`);
 
-        // Comando para ejecutar el script Python
-        const pythonProcess = spawn('python', ['exportCartones.py', cantidadCartones, bloqueSize, rutaExcel, jugada, fechaJuego]);
+        // Comando para ejecutar el archivo exportCartones.exe
+        const pythonProcess = spawn(exePath, [cantidadCartones, bloqueSize, rutaExcel, jugada, fechaJuego]);
 
-        // Capturar la salida del script Python
+        // Capturar la salida del ejecutable
         pythonProcess.stdout.on('data', (data) => {
-            console.log(`Salida del script Python: ${data}`);
+            console.log(`Salida del ejecutable: ${data}`);
             event.sender.send('progreso-cartones', data.toString());
         });
 
-        // Capturar cualquier error en la ejecución del script Python
+        // Capturar cualquier error en la ejecución del ejecutable
         pythonProcess.stderr.on('data', (data) => {
-            console.error(`Error en el script Python: ${data}`);
+            console.error(`Error en el ejecutable: ${data}`);
             event.sender.send('error', { mensaje: 'Ocurrió un error al generar los cartones.' });
         });
 
-        // Detectar cuando el proceso Python termina
+        // Detectar cuando el proceso termina
         pythonProcess.on('close', (code) => {
             if (code === 0) {
                 console.log(`Cartones generados correctamente en ${rutaExcel}`);
                 event.sender.send('cartones-generados', rutaExcel);  // Enviar la ruta del archivo Excel al frontend
             } else {
-                console.error(`El script Python terminó con un error. Código: ${code}`);
+                console.error(`El ejecutable terminó con un error. Código: ${code}`);
                 event.sender.send('error', { mensaje: 'Error al generar los cartones.' });
             }
         });
@@ -236,25 +239,44 @@ ipcMain.on('actualizar-modo-oscuro', (event, modoOscuroActivado) => {
 });
 
 ipcMain.on('cargar-cartones', (event, serial) => {
+    // Definir la ruta de la carpeta del serial
     const serialFolder = path.join(__dirname, 'seriales', serial);
-    const jsonFilePath = path.join(serialFolder, `${serial}_cartones_final.json`);
 
-    if (fs.existsSync(jsonFilePath)) {
-        const cartonesData = JSON.parse(fs.readFileSync(jsonFilePath, 'utf-8'));
+    // Comprobar si la carpeta del serial existe
+    if (fs.existsSync(serialFolder)) {
+        // Buscar el archivo JSON con el patrón esperado
+        const archivos = fs.readdirSync(serialFolder);
+        const archivoCartones = archivos.find(file => file.includes('_cartones_final.json'));
 
-        // Extraer únicamente los arrays de cartones, ignorando idCarton
-        const cartonesSinId = cartonesData.map(cartonObj => cartonObj.carton);
+        if (archivoCartones) {
+            const jsonFilePath = path.join(serialFolder, archivoCartones);
 
-        console.log(`Cartones cargados exitosamente para el serial: ${serial}`);
-        console.log(cartonesSinId);  // Aquí se mostrarán solo los arrays de los cartones
+            try {
+                // Leer y parsear el archivo JSON
+                const cartonesData = JSON.parse(fs.readFileSync(jsonFilePath, 'utf-8'));
 
-        // Enviar los cartones sin los IDs al frontend
-        event.sender.send('cartones-cargados', { serial, cartones: cartonesSinId });
+                // Extraer los arrays de cartones, ignorando otras propiedades como idCarton
+                const cartonesSinId = cartonesData.map(cartonObj => cartonObj.carton);
+
+                console.log(`Cartones cargados exitosamente para el serial: ${serial}`);
+                console.log(cartonesSinId);  // Verificación para ver si los cartones están cargados correctamente
+
+                // Enviar los cartones al frontend
+                event.sender.send('cartones-cargados', { serial, cartones: cartonesSinId });
+            } catch (error) {
+                console.error(`Error al leer el archivo de cartones para el serial: ${serial}`, error);
+                event.sender.send('error', { mensaje: 'Error al cargar los cartones. Archivo corrupto o formato inválido.' });
+            }
+        } else {
+            console.log(`No se encontró un archivo con el patrón "_cartones_final.json" en la carpeta del serial: ${serial}`);
+            event.sender.send('error', { mensaje: 'No se encontraron cartones con ese serial.' });
+        }
     } else {
-        console.log(`Error: No se encontraron cartones con el serial: ${serial}`);
-        event.sender.send('error', { mensaje: 'No se encontraron cartones con ese serial.' });
+        console.log(`Error: No se encontró la carpeta del serial: ${serial}`);
+        event.sender.send('error', { mensaje: 'No se encontró la carpeta del serial.' });
     }
 });
+
 
 app.on("window-all-closed", () => {
     if (process.platform !== "darwin") {

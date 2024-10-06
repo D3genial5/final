@@ -163,7 +163,7 @@ if __name__ == "__main__":
 
     # Actualizar la ruta del archivo Excel para que esté dentro de la carpeta del serial
     archivo_excel = os.path.join(output_dir, f"{serial}_{fecha_juego}_cartones.xlsx")
-    archivo_final_json = os.path.join(output_dir, f"{serial}_{fecha_juego}_cartones_final.json")
+    archivo_final_json = os.path.join(output_dir, f"{serial}_cartones_final.json")
 
     # Generar cartones distribuidos en los 4 modelos y guardarlos por bloques
     print(f"Generando {cantidad} cartones en bloques de {bloque_size}...")
